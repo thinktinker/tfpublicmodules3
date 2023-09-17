@@ -39,7 +39,7 @@ jobs:
     run: terraform init
      
   - name: Terraform Plan
-    run: terraform plan
+    run: terraform plan -var-file="environment/${{ github.event.inputs.environment }}.tfvars"
 
   - name: Terraform Apply
     run: terraform apply --auto-approve
