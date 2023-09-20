@@ -37,7 +37,9 @@ jobs:
   ##CD
   # Update backend.tf to host an independent .tfstate file for each deployment
   - name: Configure Independent Backend tfstate
-    run: sed 's/martin20sep2023/${{ github.event.inputs.environment }}-martin20sep2023/' backend.tf
+    run: |
+     sed 's/martin20sep2023/${{ github.event.inputs.environment }}-martin20sep2023/' backend.tf
+     cat backend.tf
 
   - name: Initialize Terraform
     run: terraform init
