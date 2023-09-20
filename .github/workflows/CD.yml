@@ -38,8 +38,9 @@ jobs:
   - name: Initialize Terraform
     run: terraform init
      
+  # Updated to use the environment variables for both plan and apply
   - name: Terraform Plan
     run: terraform plan -var-file="environment/${{ github.event.inputs.environment }}.tfvars"
 
   - name: Terraform Apply
-    run: terraform apply --auto-approve
+    run: terraform apply -var-file="environment/${{ github.event.inputs.environment }}.tfvars" --auto-approve
